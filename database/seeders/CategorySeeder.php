@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,6 +18,8 @@ class CategorySeeder extends Seeder
         $categoryComputers = new Category();
         $categoryComputers -> name = 'Computers';
         $categoryComputers ->save();
+
+        Category::factory(200)->create();
 
     }
 }
