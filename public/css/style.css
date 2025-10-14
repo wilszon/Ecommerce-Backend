@@ -1,0 +1,85 @@
+/* ===== Estilos generales ===== */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    background-color: #ffffff !important;
+    border-bottom: 3px solid #0099ff;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+/* ===== Contenedor del login ===== */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #0099ff;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px 12px 0 0;
+}
+
+.btn-primary {
+    background-color: #0099ff;
+    border: none;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0077cc;
+}
+
+a {
+    color: #0099ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Logo principal arriba ===== */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* ===== Título ===== */
+.login-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #666;
+}
