@@ -36,8 +36,9 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link text-dark" href="../pages/virtual-reality.html">
-                      <i class="material-symbols-rounded opacity-5">view_in_ar</i>
+                  <a class="nav-link {{ Request::is('admin/brands*') ? 'active bg-gradient-dark text-white' : 'text-dark' }}"
+                      href="{{ route('admin.brands.index') }}">
+                      <i class="material-symbols-rounded opacity-5">store</i>
                       <span class="nav-link-text ms-1">Brands</span>
                   </a>
               </li>
