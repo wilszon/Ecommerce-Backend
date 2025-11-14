@@ -2,8 +2,8 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-
             <h3>List of Products</h3>
+            <a href="{{ route('admin.products.create') }}" type="button" class="btn btn-success">Add New Product</a>
             <table class="table align-item-center mb-0">
                 <thead>
                     <th class="text-center font-weight-bolder">ID</th>
@@ -27,10 +27,16 @@
                             <td class="align-middle text-center">{{ $product->created_at }}</td>
                             <td class="align-middle text-center">{{ $product->updated_at }}</td>
                             <td>
-                                <a href="#" style="color: red">Eliminar</a>
-                            </td>
-                            <td>
-                                <a href="#" style="color: blue">Editar</a>
+                                <form action="{{ route('admin.products.delete', $product->id) }}" method="POST"
+                                    style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
+                                        Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
