@@ -7,11 +7,16 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function index()
+    {
+        $categories = Category::paginate(10);
+        return view('admin.categories.index', compact('categories'));
+    }
+
     public function create()
     {
         return view('admin.categories.create');
     }
-
 
     public function store(Request $request)
     {
@@ -19,7 +24,7 @@ class CategoryController extends Controller
             'name' => $request->get('name'),
         ]);
 
-        return "Se guardo la categoria correctamente";
-
+        return redirect()->route('admin.categories.index')
+            ->with('success', 'Categoría creada correctamente');
     }
 }
