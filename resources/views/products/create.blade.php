@@ -7,14 +7,32 @@
             @csrf
             <!-- Product Name -->
             <label for="ProductName">Product Name</label>
-            <input type="text" id="ProductName" name="name" />
+            @error('name')
+                <div class="text-danger mb-2">{{ $message }}</div>
+            @enderror
+            <input type="text" id="ProductName" name="name" value="{{ old('name') }}" />
+
 
             <!-- Description -->
             <label for="Description">Description</label>
-            <textarea id="Description" name="description" rows="4"></textarea>
+            @error('description')
+                <div class="text-danger mb-2">{{ $message }}</div>
+            @enderror
+            <textarea id="Description" name="description" rows="4">{{ old('description') }}</textarea>
+
+
+            <!-- Price -->
+            <label for="Price">Price</label>
+            @error('price')
+                <div class="text-danger mb-2">{{ $message }}</div>
+            @enderror
+            <input type="number" id="Price" name="price" value="{{ old('price') }}" step="0.01" />
 
             <!-- Category -->
             <label for="Category">Category</label>
+            @error('category')
+                <div class="text-danger mb-2">{{ $message }}</div>
+            @enderror
             <select class="form-select" id="Category" name="category">
                 <option value="" selected disabled> ---- </option>
                 @foreach ($categories as $item)
@@ -24,16 +42,15 @@
 
             <!-- Brand -->
             <label for="Brand">Brand</label>
+            @error('brand')
+                <div class="text-danger mb-2">{{ $message }}</div>
+            @enderror
             <select class="form-select" id="Brand" name="brand">
                 <option value="" selected disabled> ---- </option>
                 @foreach ($brands as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
             </select>
-
-            <!-- Price -->
-            <label for="Price">Price</label>
-            <input type="number" id="Price" name="price" step="0.01" />
 
             <button type="submit" class="btn-submit">Create Product</button>
         </form>
