@@ -31,6 +31,8 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('admin.cat
     Route::get('products/create', [ProductController::class, 'create'])->name('admin.products.create');
     Route::post('products/store', [ProductController::class, 'store'])->name('admin.products.store');
     Route::delete('products/{id}/delete', [ProductController::class, 'delete'])->name('admin.products.delete');
+    Route::get('/products/{id}', [ProductController::class, 'detail'])->name('product.detail');
+
 
 
     // BRANDS
