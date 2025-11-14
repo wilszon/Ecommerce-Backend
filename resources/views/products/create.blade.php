@@ -1,25 +1,41 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
     <div class="form-container">
-        <h2>Agregar Nuevo Producto</h2>
+        <h2>Add New Product</h2>
         <form>
-            <label for="nombre">Nombre del producto</label>
-            <input type="text" id="nombre" name="nombre" required />
+            <!-- Product Name -->
+            <label for="ProductName">Product Name</label>
+            <input type="text" id="ProductName" name="name" />
 
-            <label for="categoria">Categoria</label>
-            <input type="text" id="categoria" name="categoria" required />
+            <!-- Description -->
+            <label for="Description">Description</label>
+            <textarea id="Description" name="description" rows="4"></textarea>
 
-            <label for="precio">Precio</label>
-            <input type="number" id="precio" name="precio" step="0.01" required />
+            <!-- Category -->
+            <label for="Category">Category</label>
+            <select class="form-select" id="Category" name="category">
+                <option value="" selected disabled> ---- </option>
+                @foreach ($categories as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
 
-            <label for="imagen">URL de la imagen</label>
-            <input type="url" id="imagen" name="imagen" required />
 
-            <label for="descripcion">Descripción</label>
-            <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+            <!-- Brand -->
+            <label for="Brand">Brand</label>
+            <select class="form-select" id="Brand" name="brand">
+                <option value="" selected disabled> ---- </option>
+                @foreach ($brands as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
 
-            <button type="submit" class="btn-submit">Guardar Producto</button>
+            <!-- Price -->
+            <label for="Price">Price</label>
+            <input type="number" id="Price" name="price" step="0.01" />
+
+            <button type="submit" class="btn-submit">Create Product</button>
         </form>
     </div>
 @endsection
@@ -36,65 +52,103 @@
             font-family: 'Segoe UI', sans-serif;
             background-color: #f4f4f4;
             color: #333;
-            padding: 2rem;
         }
 
+        /* Centra el contenido mejor dentro del layout */
         .form-container {
-            max-width: 600px;
-            margin: 3rem auto;
+            width: 90%;
+            max-width: 650px;
+            margin: 2rem auto;
             background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Animación suave */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .form-container h2 {
             text-align: center;
             color: #0d47a1;
-            margin-bottom: 2rem;
+            font-size: 1.9rem;
+            margin-bottom: 2.5rem;
         }
 
+        /* Espaciado uniforme entre elementos */
         form label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
         }
 
         form input,
+        form select,
         form textarea {
             width: 100%;
-            padding: 0.7rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 0.8rem;
+            margin-bottom: 1.7rem;
+            border: 1.5px solid #ccc;
+            border-radius: 6px;
             font-size: 1rem;
+            background-color: #fafafa;
+            transition: all 0.25s ease;
+        }
+
+        /* Efecto al seleccionar */
+        form input:focus,
+        form textarea:focus,
+        form select:focus {
+            border-color: #0d47a1;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(13, 71, 161, 0.15);
         }
 
         form textarea {
             resize: vertical;
         }
 
+        /* Botón */
         .btn-submit {
-            display: block;
             width: 100%;
             background-color: #0d47a1;
             color: white;
-            padding: 0.8rem;
+            padding: 0.9rem;
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.25s ease, transform 0.1s ease;
         }
 
         .btn-submit:hover {
             background-color: #08306b;
         }
 
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        /* Responsive */
         @media (max-width: 600px) {
             .form-container {
-                margin: 1rem;
-                padding: 1.5rem;
+                width: 92%;
+                padding: 1.8rem;
             }
         }
     </style>
