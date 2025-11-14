@@ -3,7 +3,8 @@
 @section('content')
     <div class="form-container">
         <h2>Add New Product</h2>
-        <form>
+        <form action="{{ route('admin.products.store') }}" method="POST">
+            @csrf
             <!-- Product Name -->
             <label for="ProductName">Product Name</label>
             <input type="text" id="ProductName" name="name" />
@@ -20,7 +21,6 @@
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
             </select>
-
 
             <!-- Brand -->
             <label for="Brand">Brand</label>
